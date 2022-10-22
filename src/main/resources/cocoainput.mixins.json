@@ -1,5 +1,7 @@
 {
 	"package":"jp.axer.cocoainput.mixin",
+	"refmap":"cocoainput.refmap.json",
+	"minVersion":"0.8",
 	"mixins":[
 		"SharedConstantsMixin",
 		"EditBoxMixin",

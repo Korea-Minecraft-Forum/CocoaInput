@@ -12,6 +12,7 @@ group = project.maven_group
 
 loom {
 	accessWidenerPath =  file("../src/fabric/resources/cocoainput.accesswidener")
+	mixin { defaultRefmapName = "cocoainput.refmap.json" }
 }
 
 repositories {

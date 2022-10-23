@@ -18,7 +18,7 @@ apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
 apply plugin: 'org.spongepowered.mixin'
 
-version = '4.1.1-EXPERIMENTAL'
+version = '4.1.2-EXPERIMENTAL'
 group = 'jp.axer.cocoainput' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = 'CocoaInput-1.19.2-forge'
 

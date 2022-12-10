@@ -8,6 +8,9 @@
   "authors": [
     "Axeryok"
   ],
+  "contributors": [
+    "LemonCaramel"
+  ],
   "contact": {
     "homepage": "https://fabricmc.net/",
     "sources": "https://github.com/FabricMC/fabric-example-mod"
@@ -27,8 +30,8 @@
   },
 
   "depends": {
-    "fabricloader": ">=0.14.8",
-    "minecraft": ">=1.19.2",
+    "fabricloader": ">=0.14.11",
+    "minecraft": ">=1.19.3",
     "java": ">=17"
   },
   "suggests": {

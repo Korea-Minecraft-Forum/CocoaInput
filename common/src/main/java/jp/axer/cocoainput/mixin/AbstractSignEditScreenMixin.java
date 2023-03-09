@@ -20,13 +20,13 @@ public final class AbstractSignEditScreenMixin {
     }
 
     @Redirect(
-		method = "tick",
-		at = @At(
-			value = "FIELD",
-			target = "Lnet/minecraft/client/gui/screens/inventory/AbstractSignEditScreen;frame:I",
-			opcode = Opcodes.PUTFIELD
-		)
-	)
+        method = "tick",
+        at = @At(
+            value = "FIELD",
+            target = "Lnet/minecraft/client/gui/screens/inventory/AbstractSignEditScreen;frame:I",
+            opcode = Opcodes.PUTFIELD
+        )
+    )
     private void injectCursor(AbstractSignEditScreen esc, int n) {
         esc.frame = wrapper.renewCursorCounter();
     }

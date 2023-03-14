@@ -6,8 +6,9 @@ import jp.axer.cocoainput.util.ModLogger;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 
-public class CallbackFunction {
-    //used to interact Objective-C code
+public final class CallbackFunction {
+
+    // used to interact Objective-C code
     interface Func_insertText extends Callback {
         void invoke(String str, int position, int length);
     }
@@ -20,7 +21,7 @@ public class CallbackFunction {
         Pointer invoke();
     }
 
-    //used to provide Objective-C with logging way
+    // used to provide Objective-C with logging way
     public static Callback Func_log = new Callback() {
         public void invoke(String msg) {
             LogManager.getLogger("CocoaInput:ObjC").log(Level.INFO, msg);

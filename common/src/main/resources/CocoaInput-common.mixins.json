@@ -1,12 +1,12 @@
 {
-	"package":"jp.axer.cocoainput.mixin",
-	"refmap":"CocoaInput-common.refmap.json",
-	"minVersion":"0.8",
-	"mixins":[
-		"SharedConstantsMixin",
-		"EditBoxMixin",
-		"AbstractSignEditScreenMixin",
-		"BookEditScreenMixin"
-	],
-	"required":true
+    "package": "jp.axer.cocoainput.mixin",
+    "refmap": "CocoaInput-common.refmap.json",
+    "minVersion": "0.8",
+    "mixins": [
+        "AbstractSignEditScreenMixin",
+        "BookEditScreenMixin",
+        "EditBoxMixin",
+        "SharedConstantsMixin"
+    ],
+    "required": true
 }

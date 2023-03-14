@@ -2,7 +2,6 @@ package jp.axer.cocoainput.wrapper;
 
 import java.util.List;
 import java.util.Optional;
-
 import jp.axer.cocoainput.CocoaInput;
 import jp.axer.cocoainput.plugin.IMEOperator;
 import jp.axer.cocoainput.plugin.IMEReceiver;
@@ -15,9 +14,10 @@ import net.minecraft.client.StringSplitter;
 import net.minecraft.network.chat.FormattedText;
 import net.minecraft.network.chat.Style;
 
-public class BookEditScreenWrapper extends IMEReceiver {
-    private IMEOperator myIME;
-    private BookEditScreen owner;
+public final class BookEditScreenWrapper extends IMEReceiver {
+
+	private final BookEditScreen owner;
+    private final IMEOperator myIME;
 
     public BookEditScreenWrapper(BookEditScreen field) {
         ModLogger.log("BookEditScreen init: " + field.hashCode());
@@ -26,55 +26,56 @@ public class BookEditScreenWrapper extends IMEReceiver {
         myIME.setFocused(true);
     }
 
+	@Override
     protected void setText(String text) {
-    	if(owner.isSigning) {
-    		owner.title=text;
-    	}
-    	else {
-    		owner.setCurrentPageText(text);
-    	}
+        if (owner.isSigning) {
+            owner.title = text;
+        } else {
+            owner.setCurrentPageText(text);
+        }
     }
 
-	protected String getText() {
-		if(owner.isSigning) {
-			return owner.title;
-		}
-		else {
-			return owner.getCurrentPageText();
-		}
-	}
+	@Override
+    protected String getText() {
+        if (owner.isSigning) {
+            return owner.title;
+        } else {
+            return owner.getCurrentPageText();
+        }
+    }
 
-	protected void setCursorInvisible() {
-		owner.frameTick=6;
-	} //TODO
+	@Override
+    protected void setCursorInvisible() {
+		// TODO
+        owner.frameTick = 6;
+    }
 
-	protected int getCursorPos() {
-		if(owner.isSigning) {
-			return owner.titleEdit.getCursorPos();
-		}
-		else {
-			return owner.pageEdit.getCursorPos();
-		}
-	}
+	@Override
+    protected int getCursorPos() {
+        if (owner.isSigning) {
+            return owner.titleEdit.getCursorPos();
+        } else {
+            return owner.pageEdit.getCursorPos();
+        }
+    }
 
-	protected void setCursorPos(int p) {
-		if(owner.isSigning) {
-			owner.titleEdit.setCursorPos(p,true);
-		}
-		else {
-			owner.pageEdit.setCursorPos(p,true);
-		}
-	}
+	@Override
+    protected void setCursorPos(int cursorPos) {
+        if (owner.isSigning) {
+            owner.titleEdit.setCursorPos(cursorPos, true);
+        } else {
+            owner.pageEdit.setCursorPos(cursorPos, true);
+        }
+    }
 
-	protected void setSelectionPos(int p) {
-		if(owner.isSigning) {
-			owner.titleEdit.setSelectionRange(p, p);
-		}
-		else {
-			owner.pageEdit.setSelectionRange(p, p);
-		}
-	}
-
+	@Override
+    protected void setSelectionPos(int selectionPos) {
+        if (owner.isSigning) {
+            owner.titleEdit.setSelectionRange(selectionPos, selectionPos);
+        } else {
+            owner.pageEdit.setSelectionRange(selectionPos, selectionPos);
+        }
+    }
 
     @Override
     public Rect getRect() {
@@ -86,10 +87,10 @@ public class BookEditScreenWrapper extends IMEReceiver {
         }
         if (owner.isSigning) {
             return new Rect(
-                    (fontRendererObj.width(owner.title.substring(0, originalCursorPosition)) / 2 + ((owner.width - 192) / 2) + 36 + (116 - 0) / 2),
-                    (50 + fontRendererObj.lineHeight),
-                    0,
-                    0
+				(fontRendererObj.width(owner.title.substring(0, originalCursorPosition)) / 2 + ((owner.width - 192) / 2) + 36 + (116 - 0) / 2),
+				(50 + fontRendererObj.lineHeight),
+				0,
+				0
             );
         } else {
             StringSplitter manager = fontRendererObj.getSplitter();
@@ -103,17 +104,17 @@ public class BookEditScreenWrapper extends IMEReceiver {
                 }
             };
             lines.get(lines.size() - 1).visit(acceptor);
+
             return new Rect(
-                    (((owner.width - 192) / 2) + 36 + fontRendererObj.width(lastLine[0])),
-                    (34 + lines.size() * fontRendererObj.lineHeight),
-                    0,
-                    0
+				(((owner.width - 192) / 2) + 36 + fontRendererObj.width(lastLine[0])),
+				(34 + lines.size() * fontRendererObj.lineHeight),
+				0,
+				0
             );
         }
     }
 
     public int renewCursorCounter() {
-        return owner.frameTick+(cursorVisible?1:0);
+        return owner.frameTick + (cursorVisible ? 1 : 0);
     }
-
 }

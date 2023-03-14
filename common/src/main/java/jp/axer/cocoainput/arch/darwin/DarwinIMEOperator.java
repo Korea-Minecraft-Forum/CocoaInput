@@ -10,10 +10,10 @@ import jp.axer.cocoainput.plugin.IMEOperator;
 import jp.axer.cocoainput.plugin.IMEReceiver;
 import jp.axer.cocoainput.util.ModLogger;
 import jp.axer.cocoainput.util.Rect;
-
 import java.util.UUID;
 
 public class DarwinIMEOperator implements IMEOperator {
+
     IMEReceiver owner;
     String uuid;
     Func_insertText insertText_p;
@@ -24,6 +24,7 @@ public class DarwinIMEOperator implements IMEOperator {
     public DarwinIMEOperator(IMEReceiver field) {
         this.owner = field;
         uuid = UUID.randomUUID().toString();
+
         insertText_p = new Func_insertText() {
             @Override
             public void invoke(String str, int position, int length) {
@@ -31,18 +32,16 @@ public class DarwinIMEOperator implements IMEOperator {
                 owner.insertText(str, position, length);
             }
         };
+
         setMarkedText_p = new Func_setMarkedText() {
             @Override
-            public void invoke(String str, int position1, int length1,
-                               int position2, int length2) {
+            public void invoke(String str, int position1, int length1, int position2, int length2) {
                 ModLogger.debug("MarkedText changed at " + uuid + ".");
                 owner.setMarkedText(str, position1, length1, position2, length2);
-                ;
             }
-
         };
-        firstRectForCharacterRange_p = new Func_firstRectForCharacterRange() {
 
+        firstRectForCharacterRange_p = new Func_firstRectForCharacterRange() {
             @Override
             public Pointer invoke() {
                 ModLogger.debug("Called to determine where to draw.");
@@ -63,8 +62,8 @@ public class DarwinIMEOperator implements IMEOperator {
                 ret.write(0, buff, 0, 4);
                 return ret;
             }
-
         };
+
         ModLogger.log("IMEOperator addInstance: " + uuid);
         Handle.INSTANCE.addInstance(uuid, insertText_p, setMarkedText_p, firstRectForCharacterRange_p);
     }

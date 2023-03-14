@@ -1,10 +1,11 @@
 package jp.axer.cocoainput.util;
 
-public class Rect {
-    private float x;
-    private float y;
-    private float height;
-    private float width;
+public final class Rect {
+
+    private final float x;
+    private final float y;
+    private final float height;
+    private final float width;
 
     public Rect(float x, float y, float width, float height) {
         this.x = x;

@@ -13,7 +13,8 @@
     ],
     "contact": {
         "homepage": "https://axer.jp/",
-        "sources": "https://github.com/Korea-Minecraft-Forum/CocoaInput"
+        "sources": "https://github.com/Korea-Minecraft-Forum/CocoaInput",
+        "issues": "https://github.com/Korea-Minecraft-Forum/CocoaInput/issues"
     },
 
     "license": "MMPLJ",

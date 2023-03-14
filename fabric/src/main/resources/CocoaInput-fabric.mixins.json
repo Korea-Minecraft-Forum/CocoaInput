@@ -1,7 +1,8 @@
 {
-	"package":"jp.axer.cocoainput.mixin",
-	"refmap":"CocoaInput-fabric.refmap.json",
-	"mixins":[
-		"MinecraftMixin"	],
-	"required":true
+    "package": "jp.axer.cocoainput.mixin",
+    "refmap": "CocoaInput-fabric.refmap.json",
+    "mixins": [
+        "MinecraftMixin"
+    ],
+    "required": true
 }

@@ -1,0 +1,42 @@
+{
+    "schemaVersion": 1,
+    "id": "cocoainput",
+    "version": "${version}",
+
+    "name": "CocoaInput",
+    "description": "Support IME input on macOS, Windows, X11(Linux).",
+    "authors": [
+        "Axeryok"
+    ],
+    "contributors": [
+        "LemonCaramel"
+    ],
+    "contact": {
+        "homepage": "https://axer.jp/",
+        "sources": "https://github.com/Korea-Minecraft-Forum/CocoaInput"
+    },
+
+    "license": "MMPLJ",
+    "icon": "assets/modid/icon.png",
+
+    "environment": "client",
+    "entrypoints": {
+        "client": [
+            "jp.axer.cocoainput.loader.FabricLoader"
+        ],
+        "modmenu":[
+            "jp.axer.cocoainput.loader.CocoaInputModMenu"
+        ]
+    },
+
+    "accessWidener": "CocoaInput.accesswidener",
+    "mixins": [
+        "CocoaInput-common.mixins.json",
+        "CocoaInput-fabric.mixins.json"
+    ],
+
+    "depends": {
+        "fabricloader": ">=0.14.11",
+        "minecraft": ">=1.19.3"
+    }
+}

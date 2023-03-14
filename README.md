@@ -25,13 +25,13 @@ Fabric mod will be located in "fabric/build/libs".
 ```
 
 ## Installing
-CocoaInput official binaries has been distributed on https://www.curseforge.com/minecraft/mc-mods/cocoainput .
-Get jar from above URL or trying ”Compiling" task.
+CocoaInput official binaries has been distributed on [CurseForge](https://www.curseforge.com/minecraft/mc-mods/cocoainput).
+Get jar from above URL or trying "Compiling" task.
 Place it in your mods directory.
 
-CocoaInput requires MinecraftForge or Fabric.
+CocoaInput requires [MinecraftForge](https://github.com/MinecraftForge/MinecraftForge) or [Fabric](https://github.com/FabricMC/fabric-loader).
 
-This mod uses Java Native Access (Apache Licence2) and binuary for Minecraft 1.7.10 contains it.
+This mod uses [Java Native Access](https://github.com/java-native-access/jna) (Apache Licence2) and binary for Minecraft 1.7.10 contains it.
 
 ## License
-Minecraft Mod Public License Japanese Transration
+Minecraft Mod Public License Japanese Translation

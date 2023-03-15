@@ -3,10 +3,12 @@ package jp.axer.cocoainput.arch.darwin;
 import com.sun.jna.Callback;
 import com.sun.jna.Pointer;
 import jp.axer.cocoainput.util.ModLogger;
-import org.apache.logging.log4j.Level;
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public final class CallbackFunction {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger("CocoaInput:ObjC");
 
     // used to interact Objective-C code
     interface Func_insertText extends Callback {
@@ -24,18 +26,18 @@ public final class CallbackFunction {
     // used to provide Objective-C with logging way
     public static Callback Func_log = new Callback() {
         public void invoke(String msg) {
-            LogManager.getLogger("CocoaInput:ObjC").log(Level.INFO, msg);
+            LOGGER.info(msg);
         }
     };
     public static Callback Func_error = new Callback() {
         public void invoke(String msg) {
-            LogManager.getLogger("CocoaInput:ObjC").log(Level.ERROR, msg);
+            LOGGER.error(msg);
         }
     };
     public static Callback Func_debug = new Callback() {
         public void invoke(String msg) {
             if (ModLogger.debugMode) {
-                LogManager.getLogger("CocoaInput:ObjC").log(Level.DEBUG, msg);
+                LOGGER.debug(msg);
             }
         }
     };

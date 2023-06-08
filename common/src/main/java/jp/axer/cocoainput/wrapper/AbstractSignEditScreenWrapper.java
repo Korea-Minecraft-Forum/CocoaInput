@@ -9,7 +9,6 @@ import jp.axer.cocoainput.util.WrapperUtil;
 import net.minecraft.world.level.block.StandingSignBlock;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.screens.inventory.AbstractSignEditScreen;
-import net.minecraft.network.chat.Component;
 
 public final class AbstractSignEditScreenWrapper extends IMEReceiver {
 
@@ -25,14 +24,14 @@ public final class AbstractSignEditScreenWrapper extends IMEReceiver {
 
     @Override
     protected void setText(String text) {
-        owner.sign.setMessage(owner.line, Component.literal(text));
+        owner.setMessage(text);
         String[] util = owner.messages;
         util[owner.line] = text;
     }
 
     @Override
     protected String getText() {
-        return owner.sign.getMessage(owner.line, false).getString();
+        return owner.messages[owner.line];
     }
 
     @Override
@@ -69,7 +68,7 @@ public final class AbstractSignEditScreenWrapper extends IMEReceiver {
             y += 30;
         }
         return new Rect(
-            owner.width / 2 + fontRendererObj.width(owner.sign.getMessage(owner.line, false).toString().substring(0, originalCursorPosition)) / 2,
+            owner.width / 2 + fontRendererObj.width(owner.messages[owner.line].substring(0, originalCursorPosition)) / 2,
             // owner.width / 2 + fontRendererObj.width(owner.sign.getMessage(owner.line,false).getString()) / 2,
             y,
             0,

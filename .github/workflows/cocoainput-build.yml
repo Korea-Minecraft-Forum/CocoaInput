@@ -2,7 +2,7 @@ name: Build CocoaInput
 
 on:
   push:
-    branches: [ dev/1.19 ]
+    branches: [ dev/1.20 ]
 
 jobs:
   build:

@@ -29,7 +29,7 @@ public final class WinIMEOperator implements IMEOperator {
             return;
         }
         focus = arg0;
-        Logger.log("setFocusedCalled " + arg0);
+        Logger.debug("setFocusedCalled " + arg0);
         if (arg0) {
             WinController.focusedOperator = this;
             Handle.INSTANCE.set_focus(1);

@@ -29,7 +29,7 @@ public final class X11IMEOperator implements IMEOperator {
             return;
         }
         focus = arg0;
-        Logger.log("setFocusedCalled " + arg0);
+        Logger.debug("setFocusedCalled " + arg0);
         if (arg0) {
             X11Controller.focusedOperator = this;
             Handle.INSTANCE.set_focus(1);

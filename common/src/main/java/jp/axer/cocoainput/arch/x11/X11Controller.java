@@ -21,26 +21,26 @@ public final class X11Controller implements CocoaInputController {
     Handle.DrawCallback c_draw = new Handle.DrawCallback() {
         public Pointer invoke(int caret, int chg_first, int chg_length, short length, boolean iswstring,
                               String rawstring, WString rawwstring, int primary, int secondary, int tertiary) {
-            Logger.log("Javaside draw begin");
+            Logger.debug("Javaside draw begin");
             String string = iswstring ? rawwstring.toString() : rawstring;
 
             if (X11Controller.focusedOperator != null) {
                 GLFW.glfwSetKeyCallback(window, null);
                 X11Controller.focusedOperator.owner.setMarkedText(string, caret, tertiary - secondary, 0, 0);
             }
-            Logger.log("Preedit:" + caret + " " + chg_first + " " + chg_length + " " + length + " " + primary + " "
+            Logger.debug("Preedit:" + caret + " " + chg_first + " " + chg_length + " " + length + " " + primary + " "
                     + secondary + " " + tertiary + " " + string);
             int[] point = {600, 600};
             Memory memory = new Memory(8L);
             memory.write(0L, point, 0, 2);
-            Logger.log("Javaside draw end");
+            Logger.debug("Javaside draw end");
             return (Pointer) memory;
         }
     };
 
     Handle.DoneCallback c_done = new Handle.DoneCallback() {
         public void invoke() {
-            Logger.log("javaside preedit done");
+            Logger.debug("javaside preedit done");
             if (X11Controller.focusedOperator != null) {
                 X11Controller.focusedOperator.owner.insertText("", 0, 0);
             }
@@ -66,14 +66,14 @@ public final class X11Controller implements CocoaInputController {
     public X11Controller() throws IOException {
         setupKeyboardEvent();
 
-        Logger.log("This is X11 Controller");
+        Logger.debug("This is X11 Controller");
         CocoaInput.copyLibrary("libx11cocoainput.so", "x11/libx11cocoainput.so");
-        Logger.log("Call clang initializer");
+        Logger.debug("Call clang initializer");
         Handle.INSTANCE.initialize(window, GLFWNativeX11.glfwGetX11Window(window), this.c_draw, this.c_done,
                 Logger.clangLog, Logger.clangError, Logger.clangDebug);
         Handle.INSTANCE.set_focus(0);
-        Logger.log("Finished clang initializer");
-        Logger.log("X11Controller finished initialize");
+        Logger.debug("Finished clang initializer");
+        Logger.debug("X11Controller finished initialize");
     }
 
     @Override

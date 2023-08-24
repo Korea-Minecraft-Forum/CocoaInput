@@ -23,7 +23,7 @@ public final class WinController implements CocoaInputController {
         @Override
         public void invoke(WString str, int cursor, int length) {
             if (focusedOperator != null) {
-                Logger.log("marked " + str.toString() + " " + cursor + " " + length);
+                Logger.debug("marked " + str.toString() + " " + cursor + " " + length);
                 focusedOperator.owner.setMarkedText(str.toString(), cursor, length, 0, 0);
             }
         }
@@ -32,7 +32,7 @@ public final class WinController implements CocoaInputController {
         @Override
         public void invoke(WString str) {
             if (focusedOperator != null) {
-                Logger.log("done (" + str.toString() + ")");
+                Logger.debug("done (" + str.toString() + ")");
                 focusedOperator.owner.insertText(str.toString(), 0, 0);
             }
         }
@@ -42,7 +42,7 @@ public final class WinController implements CocoaInputController {
         @Override
         public int invoke(Pointer ret) {
             if (focusedOperator != null) {
-                Logger.log("Rect callback");
+                Logger.debug("Rect callback");
                 Rect point = focusedOperator.owner.getRect();
                 float[] buff;
                 if (point == null) {
@@ -64,7 +64,7 @@ public final class WinController implements CocoaInputController {
     };
 
     public WinController() {
-        Logger.log("This is Windows Controller");
+        Logger.debug("This is Windows Controller");
         try {
             CocoaInput.copyLibrary("libwincocoainput.dll", "win/libwincocoainput.dll");
         } catch (IOException e) {

@@ -6,7 +6,7 @@ import org.slf4j.LoggerFactory;
 public final class ModLogger {
 
     private static final Logger LOGGER = LoggerFactory.getLogger("CocoaInput:Java");
-    public static boolean debugMode = true;
+    public static boolean debugMode = false;
 
     public static void log(String msg, Object... data) {
         LOGGER.info(msg, data);

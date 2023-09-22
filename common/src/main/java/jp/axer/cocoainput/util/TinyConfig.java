@@ -217,7 +217,7 @@ public class TinyConfig {
 
         @Override
         public void render(GuiGraphics helper, int mouseX, int mouseY, float delta) {
-            this.renderBackground(helper);
+            this.renderBackground(helper, mouseX, mouseY, delta);
 
             if (mouseY >= 40 && mouseY <= 39 + entries.size() * 30) {
                 int low = ((mouseY - 10) / 30) * 30 + 10 + 2;

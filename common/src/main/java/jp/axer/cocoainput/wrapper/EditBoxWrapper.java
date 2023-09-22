@@ -29,10 +29,6 @@ public final class EditBoxWrapper extends IMEReceiver {
         myIME.setFocused(newParam);
     }
 
-    public void updateCursorCounter() {
-        if (cursorVisible) owner.frame++;
-    }
-
     @Override
     protected void setText(String text) {
         owner.value = text;
@@ -43,9 +39,8 @@ public final class EditBoxWrapper extends IMEReceiver {
         return owner.value;
     }
 
-    @Override
-    protected void setCursorInvisible() {
-        owner.frame = 6;
+    public boolean isCursorVisible() {
+        return cursorVisible;
     }
 
     @Override
@@ -55,7 +50,7 @@ public final class EditBoxWrapper extends IMEReceiver {
 
     @Override
     protected void setCursorPos(int cursorPos) {
-        owner.moveCursorTo(cursorPos);
+        owner.moveCursorTo(cursorPos, false);
     }
 
     @Override

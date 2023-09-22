@@ -99,7 +99,7 @@ public abstract class IMEReceiver {
 
     abstract protected String getText();
 
-    abstract protected void setCursorInvisible();
+    protected void setCursorInvisible() { }
 
     abstract protected int getCursorPos();
 

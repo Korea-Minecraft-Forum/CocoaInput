@@ -3,7 +3,6 @@ accessWidener v1 named
 accessible field net/minecraft/client/gui/components/EditBox font Lnet/minecraft/client/gui/Font;
 accessible field net/minecraft/client/gui/components/EditBox bordered Z
 accessible field net/minecraft/client/gui/components/EditBox value Ljava/lang/String;
-accessible field net/minecraft/client/gui/components/EditBox frame I
 accessible method net/minecraft/client/gui/components/EditBox onValueChange (Ljava/lang/String;)V
 
 accessible method net/minecraft/client/gui/screens/inventory/AbstractSignEditScreen setMessage (Ljava/lang/String;)V

@@ -20,7 +20,7 @@ public final class CallbackFunction {
     }
 
     interface Func_firstRectForCharacterRange extends Callback {
-        Pointer invoke();
+        void invoke(Pointer pointer);
     }
 
     // used to provide Objective-C with logging way

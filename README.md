@@ -8,15 +8,7 @@ git clone https://github.com/Korea-Minecraft-Forum/CocoaInput.git
 cd CocoaInput
 ```
 
-2. Compile native library<br>
-CocoaInput needs native-platform libraries to work. 
-To compile them, run one of below scripts which is your platform.
-    - native/build_lib_for_mac.sh - For macOS
-    - native/build_lib_for_x11.sh - For Linux
-    - native/build_lib_for_win.sh - For Windows
-    - (native/build_lib_all.sh - For all platform, You should create remote_build.sh to build macOS lib remotely.)
-
-3. Compile Mod<br>
+2. Compile Mod<br>
 Type below command.
 Forge mod will be located in "forge/build/libs".
 Fabric mod will be located in "fabric/build/libs".
@@ -31,7 +23,25 @@ Place it in your mods directory.
 
 CocoaInput requires [MinecraftForge](https://github.com/MinecraftForge/MinecraftForge) or [Fabric](https://github.com/FabricMC/fabric-loader).
 
-This mod uses [Java Native Access](https://github.com/java-native-access/jna) (Apache Licence2) and binary for Minecraft 1.7.10 contains it.
+## Troubleshooting (macOS 14.0+)
+If you are using macOS Sonoma or later versions, you may experience the following issue:
+- Some characters are skipped when typing very quickly.
+- The client crashes when a system key is pressed (e.g., input source switch).
+
+Most of the causes are due to the Input Tooltip added in Sonoma. However, Apple has not provided an API to disable it.
+
+![macOS Sonoma Indicator](https://github.com/LemonCaramel/caramelChat/assets/45729082/e1d34917-1892-4cb6-aa3f-38fdab58fad9)
+
+
+You can disable the Input Tooltip system-wide through the following guide.
+
+Open the Terminal and enter the following command:
+```Bash
+sudo mkdir -p /Library/Preferences/FeatureFlags/Domain
+sudo /usr/libexec/PlistBuddy -c "Add 'redesigned_text_cursor:Enabled' bool false" /Library/Preferences/FeatureFlags/Domain/UIKit.plist
+```
+And then, reboot your Macintosh. This will return you to the input environment from before Sonoma.
+
 
 ## License
 Minecraft Mod Public License Japanese Translation

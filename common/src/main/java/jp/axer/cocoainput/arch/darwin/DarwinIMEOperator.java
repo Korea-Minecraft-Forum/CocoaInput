@@ -1,6 +1,6 @@
 package jp.axer.cocoainput.arch.darwin;
 
-import com.sun.jna.Memory;
+import com.mojang.blaze3d.platform.Window;
 import com.sun.jna.Pointer;
 import jp.axer.cocoainput.CocoaInput;
 import jp.axer.cocoainput.arch.darwin.CallbackFunction.Func_firstRectForCharacterRange;
@@ -10,6 +10,7 @@ import jp.axer.cocoainput.plugin.IMEOperator;
 import jp.axer.cocoainput.plugin.IMEReceiver;
 import jp.axer.cocoainput.util.ModLogger;
 import jp.axer.cocoainput.util.Rect;
+import net.minecraft.client.Minecraft;
 import java.util.UUID;
 
 public class DarwinIMEOperator implements IMEOperator {
@@ -43,7 +44,7 @@ public class DarwinIMEOperator implements IMEOperator {
 
         firstRectForCharacterRange_p = new Func_firstRectForCharacterRange() {
             @Override
-            public Pointer invoke() {
+            public void invoke(Pointer pointer) {
                 ModLogger.debug("Called to determine where to draw.");
                 Rect point = owner.getRect();
                 float[] buff;
@@ -52,15 +53,17 @@ public class DarwinIMEOperator implements IMEOperator {
                 } else {
                     buff = new float[]{point.getX(), point.getY(), point.getWidth(), point.getHeight()};
                 }
+                Window window = Minecraft.getInstance().getWindow();
                 double factor = CocoaInput.getScreenScaledFactor();
                 buff[0] *= factor;
                 buff[1] *= factor;
                 buff[2] *= factor;
                 buff[3] *= factor;
 
-                Pointer ret = new Memory(Float.BYTES * 4);
-                ret.write(0, buff, 0, 4);
-                return ret;
+                buff[0] += window.getX();
+                buff[1] += window.getY();
+
+                pointer.write(0, buff, 0, 4);
             }
         };
 

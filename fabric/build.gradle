@@ -39,8 +39,6 @@ task copyCommonResources(type: Copy) {
 }
 
 processResources {
-    dependsOn(copyCommonResources)
-
     inputs.property "version", project.version
 
     filesMatching("fabric.mod.json") {

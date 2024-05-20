@@ -5,7 +5,7 @@
         "AbstractSignEditScreenMixin",
         "BookEditScreenMixin",
         "EditBoxMixin",
-        "SharedConstantsMixin"
+        "StringUtilMixin"
     ],
     "required": true
 }

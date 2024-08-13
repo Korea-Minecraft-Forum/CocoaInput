@@ -10,7 +10,7 @@ import net.minecraftforge.client.ConfigScreenHandler;
 import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.fml.loading.FMLPaths;
 
@@ -24,7 +24,7 @@ public final class ForgeLoader {
         MinecraftForge.EVENT_BUS.register(this);
     }
 
-    private void setup(final FMLCommonSetupEvent event) {
+    private void setup(final FMLClientSetupEvent event) {
         this.instance = new CocoaInput("MinecraftForge", ModList.get().getModFileById("cocoainput").getFile().getFilePath().toString());
         ModLogger.log("Forge config setup");
         ModLogger.log("Config path:" + FMLPaths.CONFIGDIR.get().resolve("cocoainput.json").toString());

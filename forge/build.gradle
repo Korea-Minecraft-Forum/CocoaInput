@@ -10,7 +10,6 @@ architectury {
 loom {
     // https://github.com/architectury/architectury-loom/issues/112
     accessWidenerPath = project(":common").file("src/main/resources/CocoaInput.accesswidener")
-    mixin { defaultRefmapName = "CocoaInput-forge.refmap.json" }
     forge {
         convertAccessWideners = true
         extraAccessWideners.add("CocoaInput.accesswidener")
@@ -39,6 +38,10 @@ processResources {
     filesMatching("META-INF/mods.toml") {
         expand "version": project.version
     }
+}
+
+configurations.all {
+    resolutionStrategy.force("net.sf.jopt-simple:jopt-simple:5.0.4")
 }
 
 shadowJar {
